@@ -1,14 +1,22 @@
-import "reflect-metadata";
-import { ApolloServer } from "apollo-server";
-import { buildSchema } from "type-graphql";
-import * as path from "path";
+import 'reflect-metadata';
+import * as path from 'path';
+import { Container } from "typedi";
+import { ApolloServer } from 'apollo-server';
+import { buildSchema, useContainer } from 'type-graphql';
+import { EstacionResolver } from './resolvers/estacion.resolver';
 
 async function bootstrap() {
+
+    // Configure dependecy injection
+    useContainer(Container)
+
     // build TypeGraphQL executable schema
     const schema = await buildSchema({
-        resolvers: [],
+        resolvers: [
+            EstacionResolver
+        ],
         // automatically create `schema.gql` file with schema definition in current folder
-        emitSchemaFile: path.resolve(__dirname, "schema.gql"),
+        emitSchemaFile: path.resolve(__dirname, 'schema.gql'),
     });
 
     // Create GraphQL server
