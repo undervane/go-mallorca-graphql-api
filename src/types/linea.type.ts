@@ -1,11 +1,11 @@
-import { Field, ObjectType} from 'type-graphql';
+import { Field, ObjectType } from 'type-graphql';
 import { TrayectoLinea } from './trayecto-linea.type';
 
 @ObjectType({ description: 'Detalles sobre una línea de autobús' })
 export class Linea {
 
     @Field({ description: 'Clave o id de la linea' })
-    claveLinea: string;
+    claveLinea: number;
 
     @Field({ description: 'Nombre de la linea en español' })
     nombreEs: string;
@@ -21,7 +21,7 @@ export class Linea {
 
     @Field({ description: 'Origen de la linea en español' })
     origenEs: string;
-    
+
     @Field({ description: 'Origen de la linea en alemán' })
     origenDe: string;
 
@@ -40,7 +40,7 @@ export class Linea {
     @Field({ description: 'Destino de la linea en catalán' })
     destinoCt: string;
 
-    @Field({ description: 'DestIno de la linea en inglés' })
+    @Field({ description: 'Destino de la linea en inglés' })
     destinoEn: string;
 
     @Field({ description: 'Valor hexadecimal del color -fuerte de la linea' })
@@ -50,8 +50,8 @@ export class Linea {
     colorflojo: string;
 
     @Field({ description: 'Velocidad media en KM/h del autobús' })
-    velocidad: string;
+    velocidad: number;
 
-    @Field({ description: 'Lista de trayectos' })
+    @Field(type => [TrayectoLinea], { description: 'Lista de trayectos' })
     trayectos: TrayectoLinea[]
 }

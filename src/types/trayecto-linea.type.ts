@@ -1,4 +1,4 @@
-import { Field, ObjectType} from 'type-graphql';
+import { Field, ObjectType, Int } from 'type-graphql';
 import { Frecuencia } from './frecuencia.type';
 import { Coordinate } from './coordinate.type';
 
@@ -50,25 +50,28 @@ export class TrayectoLinea {
     @Field({ description: 'Destino del trayecto en alemán' })
     destinoDe: string;
 
-    @Field({ description: 'Elemento con la información sobre esta frecuencia del trayecto' })
+    @Field({ description: 'Id de la línea EMT', nullable: true })
+    idEmt?: number;
+
+    @Field(type => [Frecuencia], { description: 'Elemento con la información sobre esta frecuencia del trayecto' })
     frecuencias: Frecuencia[];
 
-    @Field({ description: 'Lista en orden de las paradas que seguira durante su trayecto de ida, si es circular, sera null' })
+    @Field(type => [Int], { description: 'Lista en orden de las paradas que seguira durante su trayecto de ida, si es circular, sera null' })
     ida: number[];
 
-    @Field({ description: 'Lista en orden de las paradas que seguira durante su trayecto de vuelta, si es circular, sera null' })
+    @Field(type => [Int], { description: 'Lista en orden de las paradas que seguira durante su trayecto de vuelta, si es circular, sera null' })
     vuelta: number[];
 
-    @Field({ description: 'Lista en orden de las paradas que seguira durante su trayecto circular, si NO es circular, sera null' })
+    @Field(type => [Int], { description: 'Lista en orden de las paradas que seguira durante su trayecto circular, si NO es circular, sera null' })
     circular: number[];
 
-    @Field({ description: 'Lista en orden de las paradas que seguira durante su trayecto circular, si NO es circular, sera null' })
-    idarecorridoIda: Coordinate[];
+    @Field(type => [Coordinate], { description: 'Lista en orden de las paradas que seguira durante su trayecto circular, si NO es circular, sera null' })
+    recorridoIda: [Coordinate];
 
-    @Field({ description: 'Lista en orden de las paradas que seguira durante su trayecto circular, si NO es circular, sera null' })
-    recorridoVuelta: Coordinate[];
+    @Field(type => [Coordinate], { description: 'Lista en orden de las paradas que seguira durante su trayecto circular, si NO es circular, sera null' })
+    recorridoVuelta: [Coordinate];
 
-    @Field({ description: 'Lista en orden de las paradas que seguira durante su trayecto circular, si NO es circular, sera null' })
-    recorridoCircular: Coordinate[];
+    @Field(type => [Coordinate], { description: 'Lista en orden de las paradas que seguira durante su trayecto circular, si NO es circular, sera null' })
+    recorridoCircular: [Coordinate];
 
 }

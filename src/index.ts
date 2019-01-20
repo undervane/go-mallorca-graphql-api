@@ -8,6 +8,7 @@ import { AparcamientoResolver } from './resolvers/aparcamiento.resolver';
 import { CamaraResolver } from './resolvers/camara.resolver';
 import { ParadaResolver } from './resolvers/parada.resolver';
 import { TrayectoResolver } from './resolvers/trayecto.resolver';
+import { LineaResolver } from './resolvers/linea.resolver';
 
 async function bootstrap() {
 
@@ -21,7 +22,8 @@ async function bootstrap() {
             AparcamientoResolver,
             CamaraResolver,
             ParadaResolver,
-            TrayectoResolver
+            TrayectoResolver,
+            LineaResolver
         ],
         // automatically create `schema.gql` file with schema definition in current folder
         emitSchemaFile: path.resolve(__dirname, 'schema.gql'),

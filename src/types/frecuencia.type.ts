@@ -1,4 +1,4 @@
-import { Field, ObjectType} from 'type-graphql';
+import { Field, ObjectType } from 'type-graphql';
 
 @ObjectType({ description: 'Detalles sobre una frecuencia de trayecto' })
 export class Frecuencia {
@@ -70,6 +70,6 @@ export class Frecuencia {
     diaFin: number;
 
     @Field({ description: 'Mes del año que va a dejar a estar activa esta frecuencia' })
-    mesFinMes: number;
+    mesFin: number;
 
 }
