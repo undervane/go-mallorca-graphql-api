@@ -1,3 +1,5 @@
-**Transports GraphQL API**
+# Go Mallorca GraphQL API
 
-WIP
+Currently in development, documentation will be updated soon.
+
+For more information, message me through my contact details
