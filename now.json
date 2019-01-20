@@ -1,7 +1,16 @@
 {
-  "public": true,
-  "type": "docker",
-  "features": {
-    "cloud": "v2"
-  }
+  "version": 2,
+  "name": "go-mallorca-graphql-api-v1",
+  "builds": [
+    {
+      "src": "src/index.ts",
+      "use": "@now/node@canary"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/src"
+    }
+  ]
 }
