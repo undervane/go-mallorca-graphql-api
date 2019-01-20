@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import * as path from 'path';
+// import * as path from 'path';
 import { Container } from "typedi";
 import { ApolloServer } from 'apollo-server';
 import { buildSchema, useContainer } from 'type-graphql';
@@ -25,8 +25,8 @@ async function bootstrap() {
             TrayectoResolver,
             LineaResolver
         ],
-        // automatically create `schema.gql` file with schema definition in current folder
-        emitSchemaFile: path.resolve(__dirname, 'schema.gql'),
+        // // automatically create `schema.gql` file with schema definition in current folder
+        // emitSchemaFile: path.resolve('/temp', 'schema.gql'),
     });
 
     // Create GraphQL server
@@ -34,11 +34,14 @@ async function bootstrap() {
         schema,
         // enable GraphQL Playground
         playground: true,
+        introspection: true
     });
 
     // Start the server
-    const { url } = await server.listen(4000);
-    console.log(`Server is running, GraphQL Playground available at ${url}`);
+    server.listen(process.env.PORT)
+        .then(info => console.log(`Server is running, GraphQL Playground available at ${info.url}`))
+        .catch(error => console.error(error));
+
 }
 
 bootstrap();
