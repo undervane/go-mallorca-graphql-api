@@ -4,6 +4,10 @@ import { Container } from "typedi";
 import { ApolloServer } from 'apollo-server';
 import { buildSchema, useContainer } from 'type-graphql';
 import { EstacionResolver } from './resolvers/estacion.resolver';
+import { AparcamientoResolver } from './resolvers/aparcamiento.resolver';
+import { CamaraResolver } from './resolvers/camara.resolver';
+import { ParadaResolver } from './resolvers/parada.resolver';
+import { TrayectoResolver } from './resolvers/trayecto.resolver';
 
 async function bootstrap() {
 
@@ -13,7 +17,11 @@ async function bootstrap() {
     // build TypeGraphQL executable schema
     const schema = await buildSchema({
         resolvers: [
-            EstacionResolver
+            EstacionResolver,
+            AparcamientoResolver,
+            CamaraResolver,
+            ParadaResolver,
+            TrayectoResolver
         ],
         // automatically create `schema.gql` file with schema definition in current folder
         emitSchemaFile: path.resolve(__dirname, 'schema.gql'),

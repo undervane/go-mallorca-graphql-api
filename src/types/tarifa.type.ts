@@ -8,7 +8,7 @@ export class Tarifa {
     id: number;
 
     @Field({ description: 'Nombre del aparcamiento de donde se aplica la tarifa' })
-    aparcamientoLabel: number;
+    aparcamientoLabel: string;
 
     @Field({ description: 'Id del aparcamiento de donde se aplica la tarifa' })
     aparcamientoId: number;
@@ -29,9 +29,12 @@ export class Tarifa {
     horaInicio: string;
 
     @Field({ description: 'Hora formateada (hh-mm-ss) del fin de esta tarifa' })
-    horafin: string;
+    horaFin: string;
 
-    @Field({ description: 'Precio de la tarifa' })
-    pvp: Pvp[];
+    @Field({ description: 'Estado de la tarifa' })
+    tarifaAparcamientoActiva: boolean;
+
+    @Field(type => Pvp, { description: 'Precio de la tarifa' })
+    pvp: Pvp;
 
 }

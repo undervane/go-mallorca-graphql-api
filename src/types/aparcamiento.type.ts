@@ -14,6 +14,9 @@ export class Aparcamiento {
     @Field({ description: 'Id de la zona de hora' })
     zonaOraId: string;
 
+    @Field({ description: 'Nombre del aparcamiento' })
+    nombre: string;
+
     @Field({ description: 'Número de plazas libres del bus' })
     numeroPlazas: number;
 
@@ -44,10 +47,10 @@ export class Aparcamiento {
     @Field({ description: 'Tiempo absoluto en el cual este aparcamiento fue modificado por última vez' })
     lastModified: number;
 
-    @Field({ description: 'Nombre de la zona de hora' })
+    @Field(type => [Tarifa], { description: 'Nombre de la zona de hora' })
     vigenciaTarifas: Tarifa[];
 
-    @Field({ description: 'Lista de puntos de entrada/salida disponibles para el aparcamiento' })
+    @Field(type => [EntradaAparcamiento], { description: 'Lista de puntos de entrada/salida disponibles para el aparcamiento' })
     puntosAparcamientos: EntradaAparcamiento[];
 
     @Field({ description: 'Cantidad de plazas libres en el aparcamiento' })

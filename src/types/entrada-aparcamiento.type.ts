@@ -15,6 +15,9 @@ export class EntradaAparcamiento {
     @Field({ description: '-Flag- Si es entrada' })
     isEntrada: boolean
 
+    @Field({ description: '-Flag- Si es salida' })
+    isSalida: boolean
+
     @Field(type => Float, { description: 'Latitud del punto' })
     latitud: number;
 

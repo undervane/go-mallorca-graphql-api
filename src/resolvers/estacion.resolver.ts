@@ -1,6 +1,7 @@
-import { Resolver, Query, Arg } from "type-graphql";
+import { Resolver, Query, Arg, Args } from "type-graphql";
 import { Estacion } from "../types/estacion.type";
 import { EstacionService } from "../integration/mobipalma/service/estacion.service";
+import { GenericArgs } from "./args/generic.args";
 
 @Resolver(of => Estacion)
 export class EstacionResolver {
@@ -8,7 +9,7 @@ export class EstacionResolver {
     constructor(private readonly estacionService: EstacionService) { }
 
     @Query(returns => [Estacion], { description: "Get list of all stations" })
-    async stations(): Promise<Estacion[]> {
+    async stations(@Args() options: GenericArgs): Promise<Estacion[]> {
         return await this.estacionService.findStatic();
     }
 

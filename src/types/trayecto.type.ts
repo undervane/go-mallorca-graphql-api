@@ -1,6 +1,6 @@
-import { Field, ObjectType} from 'type-graphql';
+import { Field, ObjectType } from 'type-graphql';
 import { Coordinate } from './coordinate.type';
-import { TrackStatusEnum } from './enum/status.enum';
+import { TrackStatusEnum } from './enum/track-status.enum';
 
 @ObjectType({ description: 'Elemento por cada trayecto encontrado' })
 export class Trayecto {
@@ -23,10 +23,10 @@ export class Trayecto {
     @Field({ description: 'Tipo del tramo' })
     tipo: string;
 
-    @Field({ description: 'Lista con las coordenadas de cada punto de trayecto. Uniendo los puntos sobre un mapa se conseguirá una ruta' })
+    @Field(type => [Coordinate], { description: 'Lista con las coordenadas de cada punto de trayecto. Uniendo los puntos sobre un mapa se conseguirá una ruta' })
     coordenadas: Coordinate[];
 
-    @Field({ description: 'Estado del tramo' })
+    @Field(type => TrackStatusEnum, { description: 'Estado del tramo' })
     estado: TrackStatusEnum;
 
 }
